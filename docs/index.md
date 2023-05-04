@@ -52,11 +52,11 @@ Oczywiście najskuteczniejszą formą wsparcia projektu może być udział w nim
 Będziemy także ogromnie zaszczyceni, jeśli zwrócą się do nas instytucje, które projekt ten wdrożyły.
 
 # 5 kroków do uzyskania oznaczeń
-1. [Utworzenie komputerowego modelu 3d tabliczki](tab/model.md)
-2. [Wybór materiału](tab/materialy.md)
-3. [Dobór parametrów i wydruk modelu](tab/wymagania.md)
-4. (opcjonalnie) [Wygładzenie chemiczne](tab/wygladzanie.md)
-5. [Kontrola](tab/kontrola.md)
+1. [Utworzenie komputerowego modelu 3d tabliczki](instrukcja/model.md)
+2. [Wybór materiału](instrukcja/materialy.md)
+3. [Dobór parametrów i wydruk modelu](instrukcja/wymagania.md)
+4. (opcjonalnie) [Wygładzenie chemiczne](instrukcja/wygladzanie.md)
+5. [Kontrola](instrukcja/kontrola.md)
 
 # Szkolenia
 Fundacja Prowadnica prowadzi szkolenia dla szkół, uczelni, firm z branży druku 3d w zakresie wykonywania oznaczeń w alfabecie Brajla.
