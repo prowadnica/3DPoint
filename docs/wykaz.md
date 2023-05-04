@@ -20,8 +20,8 @@ W trakcie kontroli weryfikowana jest:
 * Zgodność Brajla ze specyfikacjami, w szczególności w zakresie znaków specjalnych i interpunkcyjnych
 * Wyraźność i ostrość Brajla, brak artefaktów druku uniemożliwiających poprawne odczytanie napisu
 
-| --- | --- | --- |
 | Instytucja | Adres | Wykonawca | Uwagi |
+| --- | --- | --- | --- |
 | Liceum Ogólnokształcące z Oddziałami Integracyjnymi | Al. Wojska Polskiego 119, 70-490, Szczecin | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
 | Dolnośląski Szpital Specjalistyczny im. T. Marciniaka | Fieldorfa 2, 54-049, Wrocław | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
 | Urząd Gminy Bukowsko | Bukowsko 290, 38-505, Bukowsko | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
@@ -32,7 +32,7 @@ W trakcie kontroli weryfikowana jest:
 | Stowarzyszenie Przyjaciół Publicznej Szkoły Podstawowej w Sielcu | Sielec 38, 05-610, Goszczyn | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
 | Hrubieszowska Spółdzielnia Socjalna im. Zośki | Piłsudskiego 11, 22-500, Hrubieszów | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
 | Muzeum Pierwszych Piastów na Lednicy | Dziekanowice 32, 62-261, Lednogóra | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 
 ## Tabliczki niezweryfikowane
 W tym miejscu umieszczone zostaną instytucje, które zgłosiły wykonanie tabliczek w ramach projektu 3(r)D Point, ale nie zostały zweryfikowane przez Fundację Prowadnica.
