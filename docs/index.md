@@ -1,13 +1,13 @@
 Wierzymy, że powszechność i osiągalność to podstawy dostępności. Świat dostępny nie tkwi za złoconymi wrotami, w strefie biznesowej, świat dostępny może być tylko tu i teraz.
 
-Od 2021 roku prowadzimy eksperymenty z wykorzystaniem druku 3d w produkcji tabliczek z napisami w alfabecie Brajla, a także kodami QR, informacjami kontrastowymi, poddrukiem czy z zatopionymi tagami NFC. Wykonaliśmy łącznie ponad 1000 różnych tabliczek z najróżniejszymi ustawieniami i materiałami. Tabliczki były oceniane przez nas jako osoby niewidome, a następnie prezentowane szerszemu gronu. Wiele z nich w ramach pilotażu zostało zupełnie za darmo przekazanych szkołom, urzędom, muzeom i szpitalom w całej Polsce, gdzie służą do dziś.
+Od 2021 roku prowadzimy eksperymenty z wykorzystaniem druku 3d w produkcji tabliczek z napisami w alfabecie Brajla, a także kodami QR, informacjami kontrastowymi, poddrukiem czy z zatopionymi tagami NFC. Wykonaliśmy łącznie ponad 1000 różnych tabliczek z najróżniejszymi ustawieniami i materiałami. Jako osoby niewidome sami testowaliśmy tabliczki w pierwszej kolejności, a następnie prezentowaliśmy je szerszemu gronu. Wiele z nich w ramach pilotażu zostało zupełnie za darmo przekazanych szkołom, urzędom, muzeom i szpitalom w całej Polsce, gdzie służą do dziś.
 Udało się nam przez to zarówno potwierdzić możliwość drukowania 3d tabliczek w alfabecie Brajla, ich trwałość i użyteczność, jak i stworzyć dokumentację i zalecenia uzyskania oczekiwanych wyników - Brajl wcale nie jest tak prosty w druku 3d i bardzo łatwo uzyskać efekt bardzo niezadowalający.
 
-Teraz nadszedł czas na kolejny krok. Drukarki 3d stały się już sprzętem powszechnym: znajdziemy je w niemal każdej szkole (dzięki "Laboratoriom Przyszłości"), na niemal każdej uczelni, w domach wielu hobbystów i w urzędach. Naszym celem nie jest zagarnianie badań dla siebie, przeciwnie, wierzymy w świat otwartego oprogramowania; świat, w którym szkoła, szpital, urząd, uniwersytet same dla siebie wydrukują niezbędne oznaczenia.
+Teraz nadszedł czas na kolejny krok. Drukarki 3d stały się już sprzętem powszechnym: znajdziemy je w niemal każdej szkole (dzięki "Laboratoriom Przyszłości"), na niemal każdej uczelni, w domach wielu hobbystów i w urzędach. Naszym celem nie jest zatrzymywanie wiedzy dla siebie, przeciwnie, wierzymy w świat otwartego oprogramowania; świat, w którym szkoła, szpital, urząd, uniwersytet same dla siebie wydrukują niezbędne oznaczenia.
 
 ![Koło z brajlowskim napisem Fundacja Prowadnica, w poddruku kod QR do strony Fundacji, logo i dane kontaktowe](fdmbraille/sgn_underprint.jpg)
 
-## Słowem wstępu
+## O projekcie
 
 ### Czym jest projekt 3(r)D Point?
 3(r)D Point to projekt, którego celem jest popularyzacja wykonywania tabliczek z napisami w alfabecie Brajla z wykorzystaniem druku 3d. Wierzymy, że wraz z prostotą wykonywania takich oznaczeń będą się one stawały coraz powszechniejsze.
@@ -71,7 +71,7 @@ W ten sposób uczniowie mogą wykorzystać swoją wiedzę do stworzenia oznacze�
 Ze w\zględu na złożoność zagadnień szkolenie to dedykujemy przede wszystkim uczniom szkół średnich na profilach matematycznych, fizycznych lub chemicznych.
 
 ## Dostępność dla osób niewidomych
-Fundację Prowadnica tworzą osoby niewidome. Sami projektujemy, drukujemy, wygładzamy chemicznie wykonywane przez nas tabliczki, wiemy więc jak nauczyć tego również osoby niewidome.
+Fundację Prowadnica tworzą osoby niewidome. Sami projektujemy, drukujemy, wygładzamy chemicznie wykonywane przez nas tabliczki, wiemy więc jak nauczyć tego również osoby z dysfunkcją wzroku.
 
 # Uczestnicy projektu
 Wykaz instytucji uczestniczących w projekcie można odnaleźć [tutaj](wykaz.md).
