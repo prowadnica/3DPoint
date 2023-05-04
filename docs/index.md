@@ -1,5 +1,3 @@
-# 3(r)D Point
-
 Wierzymy, że powszechność i osiągalność to podstawy dostępności. Świat dostępny nie tkwi za złoconymi wrotami, w strefie biznesowej, świat dostępny może być tylko tu i teraz.
 
 Od 2021 roku prowadzimy eksperymenty z wykorzystaniem druku 3d w produkcji tabliczek z napisami w alfabecie Brajla, a także kodami QR, informacjami kontrastowymi, poddrukiem czy z zatopionymi tagami NFC. Wykonaliśmy łącznie ponad 1000 różnych tabliczek z najróżniejszymi ustawieniami i materiałami. Tabliczki były oceniane przez nas jako osoby niewidome, a następnie prezentowane szerszemu gronu. Wiele z nich w ramach pilotażu zostało zupełnie za darmo przekazanych szkołom, urzędom, muzeom i szpitalom w całej Polsce, gdzie służą do dziś.

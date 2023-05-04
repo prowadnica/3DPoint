@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "Wykaz instytucji"
 permalink: /wykaz
 ---
@@ -36,3 +35,7 @@ W trakcie kontroli weryfikowana jest:
 
 ## Tabliczki niezweryfikowane
 W tym miejscu umieszczone zostaną instytucje, które zgłosiły wykonanie tabliczek w ramach projektu 3(r)D Point, ale nie zostały zweryfikowane przez Fundację Prowadnica.
+
+---
+
+[Wróć do strony głównej](index.md)

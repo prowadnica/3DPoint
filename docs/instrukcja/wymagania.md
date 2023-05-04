@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "3. Dobór parametrów i wydruk modelu"
 permalink: /instrukcja/krok3
 ---
@@ -33,3 +32,7 @@ Zmniejszenie temperatury może także pomóc, gdy na kropkach Brajla osadza się
 [<<<< 2. Wybór materiału](materialy.md)
 
 [>>>> 4. (opcjonalnie) Wygładzanie chemiczne](wygladzanie.md)
+
+---
+
+[Wróć do strony głównej](../index.md)

@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "4. Wygładzanie chemiczne"
 permalink: /instrukcja/krok4
 ---
@@ -33,3 +32,7 @@ Z naszych obserwacji wynika, że do wygładzenia tabliczki wystarczy nawet 6-10 
 [<<<< 3. Dobór parametrów i wydruk modelu](wymagania.md)
 
 [>>>> 5. Kontrola](kontrola.md)
+
+---
+
+[Wróć do strony głównej](../index.md)

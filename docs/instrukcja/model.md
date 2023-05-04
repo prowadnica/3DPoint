@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "1. Utworzenie komputerowego modelu 3d tabliczki"
 permalink: /instrukcja/krok1
 ---
@@ -26,3 +25,7 @@ Tym czasem możliwe jest utworzenie tych elementów ręcznie w dowolnym edytorze
 [<<<< Strona Główna](../index.md)
 
 [>>>> 2. Wybór materiału](materialy.md)
+
+---
+
+[Wróć do strony głównej](../index.md)

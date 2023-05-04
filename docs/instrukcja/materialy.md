@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "2. Wybór materiału"
 permalink: /instrukcja/krok2
 ---
@@ -50,3 +49,7 @@ Materiał ten może znaleźć zastosowanie w warunkach przemysłowych a także w
 [<<<< 1. Utworzenie komputerowego modelu 3d tabliczki](model.md)
 
 [>>>> 3. Dobór parametrów i wydruk modelu](wymagania.md)
+
+---
+
+[Wróć do strony głównej](../index.md)

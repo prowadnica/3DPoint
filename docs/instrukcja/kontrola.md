@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "5. Kontrola"
 permalink: /instrukcja/krok5
 ---
@@ -12,3 +11,7 @@ Wykonane tabliczki można także skonsultować z nami i uzyskać w ten sposób o
 [<<<< 4. (opcjonalnie) Wygładzanie chemiczne](wygladzanie.md)
 
 [>>>> Strona Główna](../index.md)
+
+---
+
+[Wróć do strony głównej](../index.md)
