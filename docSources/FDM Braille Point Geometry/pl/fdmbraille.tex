@@ -1,4 +1,5 @@
 \documentclass[12pt,a4paper]{article}
+\AddToHook{cmd/section/before}{\clearpage}
 \usepackage[MeX]{polski}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
@@ -6,6 +7,24 @@
 \usepackage{pgfplots}
 \usepackage{tikz}
 \usepackage{braille}
+\usepackage{newfloat}
+\usepackage{ifpdf}
+
+\DeclareFloatingEnvironment[
+    fileext=feq,
+    listname={Wykaz równań},
+    name=Równanie,
+    placement=h!,
+    within=section,
+]{feq}
+\newcommand*{\feqref}[1]{(\hyperref[{#1}]{Równanie \ref{#1}: \nameref*{#1}})}
+
+\DeclareFloatingEnvironment[
+    fileext=code,
+    listname={Lista kodów źródłowych},
+    name=Kod źródłowy,
+    placement=h,
+]{code}
 
 \begin{document}
 \title{Geometria punktu brajlowskiego w druku 3d w technologii FDM}
@@ -28,10 +47,9 @@ Osoby pragnące wykonać tabliczki lub inne elementy z oznaczeniami w alfabecie 
 \newpage
 
 \section{Wstęp}
-\emph{Fundacja Prowadnica} to organizacja, która za cel postawiła sobie, między innymi, badanie i promowanie wykorzystywania nowoczesnych technologii na rzecz osób niewidomych. Jednym z obszarów tych działań jest implementacja druku 3d w tworzeniu oznaczeń, makiet, materiałów edukacyjnych, gier planszowych i innych akcesoriów wykonywanych dla osób z dysfunkcją wzroku.
-W ramach tych eksperymentów zbadana została także możliwość wykorzystania druku 3d do tworzenia oznaczeń w alfabecie Brajla.
+Motywacją do przeprowadzenia omówionych w niniejszej pracy badań było zaproponowanie druku 3d jako alternatywnej metody wytwarzania oznaczeń z napisami w alfabecie Brajla, przede wszystkim tabliczek umieszczanych na drzwiach.
 
-Celem było sprawdzenie, czy możliwe jest tworzenie jakościowo akceptowalnych tabliczek z brajlowskimi podpisami z wykorzystaniem technologii FDM jako alternatywy do obecnie stosowanych, znacznie kosztowniejszych metod, a także samodzielne ich wykonywanie bezpośrednio przez instytucje, które zgłaszają zapotrzebowanie na tego typu oznaczenia.
+Powszechnie wykorzystywane do tej pory technologie wymagają specjalistycznego sprzętu lub wiążą się z bardzo wysokimi kosztami. W związku ze zwiększającą się dostępnością drukarek 3d FDM, także niskobudżetowych, celem było sprawdzenie możliwości wykonywania takich tabliczek bezpośrednio przez instytucje, które zgłaszają zapotrzebowanie na tego typu oznaczenia.
 
 W pracy tej zostały ujęte wyniki eksperymentów prowadzonych od października 2021 roku. Ponieważ stosowana w Fundacji technologia jest rozwijana w sposób ciągły, jeśli w badaniach wykazane zostaną dodatkowe czynniki lub zajdą istotne dla procesu zmiany, praca zostanie odpowiednio przeredagowana i wzbogacona o nowe treści.
 
@@ -39,6 +57,26 @@ W pracy tej zostały ujęte wyniki eksperymentów prowadzonych od października 
 \includegraphics[width=\linewidth]{sgn_pla.jpg}
 \caption{Przykładowa tabliczka drukowana z PLA}
 \end{figure}
+
+\subsection{O Fundacji Prowadnica}
+\emph{Fundacja Prowadnica} to organizacja tworzona przez osoby niewidome, działająca na rzecz osób niewidomych. Założona w kwietniu 2021 roku postawiła za swój główny cel:
+\begin{itemize}
+\item Wspieranie osób niewidomych, w szczególności młodzieży, na drodze do samodzielności,
+\item Działania mające na celu promowanie wizerunku samodzielnych osób niewidomych w społeczeństwie,
+\item Badanie, promowanie i implementowanie nowoczesnych technologii w służbie osobom niewidomym.
+\end{itemize}
+
+Jednym z obszarów działań związanych z ostatnim celem jest projekt \emph{Dotknij Trzeciego Wymiaru}, którego ideą jest implementacja druku 3d w tworzeniu oznaczeń, makiet, materiałów edukacyjnych, gier planszowych i innych akcesoriów wykonywanych dla osób z dysfunkcją wzroku.
+
+\subsection{Organizacja pracy}
+Celem zwiększenia czytelności, niniejsza praca składa się z trzech podstawowych części:
+\begin{itemize}
+\item \hyperref[sec:geometry]{Pierwszej} poświęconej teorii, w szczególności matematycznemu opisowi druku 3d i odpowiedniej orientacji modelu,
+\item \hyperref[sec:factors]{Drugiej} poświęconej zewnętrznym czynnikom mającym wpływ na jakość druku,
+\item \hyperref[sec:comparison]{Trzeciej} omawiającej porównanie druku 3d FDM z innymi (stosowanymi i potencjalnymi) metodami wykonywania oznaczeń w alfabecie Brajla.
+\end{itemize}
+
+Na końcu pracy umieszczony został także \hyperref[sec:recommendations]{skrócony wykaz wytycznych} pozwalających na uzyskanie pożądanego efektu.
 
 \subsection{Przybliżenie terminologii i podstawowych zagadnień}
 \subsubsection{Technologia FDM}
@@ -105,6 +143,7 @@ Jeśli nie zaznaczono inaczej, stosowane były następujące ustawienia druku:
 \end{itemize}
 
 \section{Geometria punktu brajlowskiego}
+\label{sec:geometry}
 W zagadnieniu druku 3d punktów Brajlowskich kluczowym problemem jest geometria pojedynczej kropki. Osoby niewidome odczytują tekst brajlowski poprzez dotykanie liter palcami. Oznacza to, że poprawne ukształtowanie i wykonanie punktów jest niezbędne dla uzyskania czytelności i użyteczności napisu.
 Jak wspomniano powyżej, początkowo punkty brajlowskie były wykonywane z użyciem dłutka o zaostrzonej krawędzi, którym  naciskano na papier umieszczony na odpowiedniej tabliczce z niewielkimi, walcowymi otworami. Tabliczkę profilowano w taki sposób, by punkt stał się wyraźny w dotyku na powierzchni kartki, ale by sama kartka nie została przebita.
 Taki punkt ma zaokrąglony kształt, nie jest walcem, stożkiem czy kulą.
@@ -129,14 +168,14 @@ Można przyjąć, że punkt brajlowski jest figurą powstałą poprzez obrót p�
 \end{figure}
 
 Równanie tej elipsoidy przyjmuje następującą postać:
-\begin{figure}
+\begin{feq}
 Dla każdego $z \geq 0$
 
-$4\frac{x^2+y^2}{d^2} + \frac{z^2}{h^2} \leq 1$,
+$4\frac{x^2+y^2}{d^2} + \frac{z^2}{h^2} \leq 1$
 
 gdzie $x$, $y$ i $z$ są współrzędnymi punktu.
-\caption{Równanie elipsoidy punktu brajlowskiego}
-\end{figure}
+\caption{Elipsoida punktu brajlowskiego}
+\end{feq}
 
 Komputerowe uzyskanie punktu możliwe jest na dwa podstawowe sposoby.
 
@@ -145,9 +184,9 @@ Dana jest półkula o środku w punkcie $(0;0;0)$ i promieniu $d.2$, czyli wyra�
 
 Dla każdego $z \geq 0$
 
-$4\frac{x^2+y^2+z^2}{d^2} \leq 1$,
+$4\frac{x^2+y^2+z^2}{d^2} \leq 1$
 
-gdzie $x$, $y$ i $z'$ są współrzędnymi punktu.
+gdzie $x$, $y$ i $z$ są współrzędnymi punktu.
 
 Poprzez wykorzystanie skalowania można w łatwy sposób uzyskać pożądaną geometrię punktu brajlowskiego. Wystarczy przyjąć współczynniki skalowania
 $$
@@ -162,20 +201,19 @@ Ponieważ dla $x,y \in (-d/2; d/2)$
 
 $z = \sqrt{\frac{d^2}{4} - x^2 - y^2}$,
 
-Uzyskujemy wzór skalowania
+Uzyskiwany jest wzór skalowania
 
-
-\begin{figure}
-$z' = \frac{h*2}{d} \sqrt{\frac{d^2}{4} - x^2 - y^2}$,
+\begin{feq}
+$z' = \frac{h*2}{d} \sqrt{\frac{d^2}{4} - x^2 - y^2}$
 
 gdzie $z'$ jest współrzędną osi $z$.
 \caption{Skalowanie półkuli do półelipsoidy punktu Brajlowskiego}
-\end{figure}
+\end{feq}
 
 \subsubsection{Przykład implementacji}
 Poniżej znajduje się przykładowa implementacja w języku OpenSCAD.
 
-\begin{figure}
+\begin{code}
 \begin{verbatim}
 module brailleDot(d, h) {
   scale([1, 1, h/d])
@@ -187,7 +225,7 @@ module brailleDot(d, h) {
 }
 \end{verbatim}
 \caption{OpenSCAD: reprezentacja punktu brajlowskiego poprzez skalowanie kuli}
-\end{figure}
+\end{code}
 
 \subsection{Punkt Brajlowski jako wycinek kuli}
 Ponieważ jakość powyższego przekształcenia jest silnie związana z przyjętą rozdzielczością skalowania i mało zoptymalizowana, można również ująć punkt brajlowski jako zbiór punktów kuli o środku w punkcie $z<0$ takich, że $z \geq 0$.
@@ -227,13 +265,10 @@ $ \left| PA \right| = \left| PB \right| = \frac{d}{2}$, ponieważ punkt $P$ leż
 
 \emph{Twierdzenie o Cięciwach} \cite{chords} mówi, że
 
-\begin{figure}
 Jeśli w okręgu 2 cięciwy $\overline{AB}$ i $\overline{CD}$ przecinają się w punkcie $P$,
 $ \left|PA\right| \times \left| PB \right| = \left| PC \right| \times \left| PD \right| $.
-\caption{Twierdzenie o cięciwach}
-\end{figure}
 
-Możemy stąd wyznaczyć długość odcinka
+Można stąd wyznaczyć długość odcinka
 $\overline{PD} = \frac{\frac{d}{2} * \frac{d}{2}}{h}$.
 
 $$
@@ -248,8 +283,8 @@ Zatem punkt Brajlowski może być stworzony jako fragment kuli $z \geq 0$ o prom
 
 Równanie tego punktu przyjmuje postać:
 
-\begin{figure}
-Dla każdego $z>0$
+\begin{feq}
+Dla każdego $z \geq 0$
 
 $x^2 + y^2 + (z - z_P)^2 = R^2$,
 
@@ -258,15 +293,16 @@ gdzie:
 $R = \frac{h + \frac{d^2}{4h}}{2}$,
 
 $z_P = h-R$.
-\caption{Równanie półelipsoidy punktu brajlowskiego wyznaczonej z kuli}
-\end{figure}
+\caption{Półelipsoida punktu brajlowskiego wyznaczona z kuli}
+\label{eq:ellipsoidsphere}
+\end{feq}
 
-Powyższa formuła będzie stosowana celem uproszczenia obliczeń w dalszej części niniejszego opracowania, ale należy pamiętać, że obydwie zaprezentowane strategie są tożsame.
+Należy pamiętać, że obydwie zaprezentowane strategie są matematycznie tożsame.
 
 \subsubsection{Przykład implementacji}
 Poniżej znajduje się przykładowa implementacja w języku OpenSCAD.
 
-\begin{figure}
+\begin{code}
 \begin{verbatim}
 function calculateDotSphereRadius(d,h) = 
   (d^2 / (4*h) + h) / 2;
@@ -282,7 +318,25 @@ module brailleDot(d, h) {
 }
 \end{verbatim}
 \caption{OpenSCAD: reprezentacja punktu brajlowskiego jako półelipsoidę będącą wycinkiem kuli}
-\end{figure}
+\end{code}
+
+\subsection{Powierzchnia i objętość punktu}
+Ze wzorów na pole powierzchni i objętość elipsoidy \cite{ellipsoid} możliwe jest wyznaczenie tych wartości dla punktu brajlowskiego o średnicy podstawy $d$ i wysokości $h$.
+
+Objętość punktu Brajlowskiego dana jest wzorem:
+\begin{feq}
+$V = \frac{\frac{4}{3}\pi \frac{d}{2}^2h}{2}$
+\caption{Objętość punktu Brajlowskiego}
+\label{eq:braille_dot_v}
+\end{feq}
+
+Pole powierzchni punktu Brajlowskiego dane jest wzorem:
+\begin{feq}
+$S = \frac{2\pi \left(\left(\frac{d}{2}\right)^2 + \frac{h^2}{e} \sinh^{-1}(e)\right)}{2}$
+gdzie
+$e = \sqrt{1 - \left(\frac{h^2}{(d/2)^2}\right)}$
+\caption{Pole powierzchni punktu brajlowskiego}
+\end{feq}
 
 \subsection{Układ punktów}
 Prócz wymiarów odnoszących się do samego punktu, czcionka Brajlowska definiuje także odległość między punktami w jednym znaku ($o$), odległość między sąsiednimi znakami ($w$) oraz wysokość linii tekstu ($l$).
@@ -297,7 +351,7 @@ Przykładowo w Brajlu słowo "test" ma postać: \braille{test}.
 
 Poniższy kod w języku OpenSCAD pozwoli na stworzenie tego napisu.
 
-\begin{figure}
+\begin{code}
 \begin{verbatim}
 module writeBraille(letters, o=2.5, w=6.0, l=10.0, d=1.3, h=0.5) {
   for(line = [0: len(letters)-1]) {
@@ -321,29 +375,31 @@ letters = [[[2,3,4,5], [1,5], [2,3,4], [2,3,4,5]]];
 writeBraille(letters);
 \end{verbatim}
 \caption{OpenSCAD: przykładowy napis w Brajlu}
-\end{figure}
+\end{code}
 
 \section{Reprezentacja geometrii druku FDM punktu ułożonego równolegle do powierzchni stołu}
 
 Przez $H$ oznaczmy wysokość warstwy druku FDM, $D$ szerokość ścieżki ekstruzji, $h_p$ wysokość punktu Brajlowskiego, a $d_p$ średnicę podstawy.
-$D$ oznacza minimalną średnicę walca umieszczanego na warstwie druku. Należy zauważyć, że rzeczywista wytłaczana średnica jest skwantowana do wielokrotności $D$ w przedziale $(0, D \cdot 2)$, ponieważ nie jest możliwe umieszczenie linii składającej się z niepełnej szerokości ścieżki.
+$D$ oznacza minimalną średnicę walca umieszczanego na warstwie druku. Należy zauważyć, że rzeczywista wytłaczana średnica jest skwantowana do wielokrotności $D$ w przedziale $(0; D \cdot 2)$, ponieważ nie jest możliwe umieszczenie linii składającej się z niepełnej szerokości ścieżki.
 Warto nadmienić, że w rzeczywistości współczesne oprogramowanie stara się dynamicznie dostosować szerokość ścieżki do potrzeb, będąc w stanie lekko ją zwężać lub rozszerzać \cite{arachne}. Jest to stosunkowo nowe podejście, jednak dla uproszczenia obliczeń w niniejszej pracy założona zostanie stała wartość $D$, nowość ta nie ma większego wpływu na poprawne drukowanie Brajla, gdyż rzeczywiste różnice w szerokości ścieżki są zbyt niewielkie.
 
-Zależność średnicy walca składającego się na punkt $d_z$ od wysokości $z$ przedstawia wzór
+Zależność średnicy walca składającego się na punkt $d_z$ od wysokości $z$ można wyprowadzić z reprezentacji punktu jako wycinku kuli \feqref{eq:ellipsoidsphere} w postaci wzoru
 
-\begin{figure}
-$d_z = 2 * \sqrt{(R_k)^2 - (R_k - h_p + z)^2}$,
+\begin{feq}
+$d_z = 2 * \sqrt{(R_k)^2 - (R_k - h_p + z)^2}$
 
 gdzie $R_k = \frac{h_p + \frac{d_p^2}{4h_p}}{2}$
+
 \caption{Średnica równoległego przekroju punktu Brajlowskiego na wysokości $z$}
-\end{figure}
+\label{eq:braille_p_dz}
+\end{feq}
 
 Na poniższym wykresie zaznaczone są poprawne średnice walców czerwona linia) i rzeczywiste średnice niebieska linia) na kolejnych warstwach dla $d_p = 1{,}3 \text{ mm}$ i $h_p = 0{,}5 \text{ mm}$.
 
-\begin{figure}
+\begin{figure}{h}
 \begin{tikzpicture}[scale=1.5]
 \begin{axis}[
-title={Zależność średnicy walca warstwy od wysokości warstwy $z$},
+title={Zależność średnicy walca warstwy od wysokości $z$},
 title style={text width=12em},
 xlabel={Wysokość [\text{ mm}]},
 ylabel={Średnica [\text{ mm}]},
@@ -392,19 +448,47 @@ Z powodu szerokiej ścieżki ekstruzji, zmniejszanie wysokości warstwy nie ma w
 \caption{Przekrój poziomy punktu o wymiarach $h_p = 0{,}5 \text{ mm}$ i średnicy podstawy $d_p=1{,}3 \text{ mm}$ drukowanego równolegle przy wysokości warstwy $H = 0{,}1 \text{ mm}$ i szerokości ścieżki $D = 0{,}45 \text{ mm}$}
 \end{figure}
 
+\begin{table}[t]
+\caption{Zależność szerokości ścieżki ekstruzji $D$ od wysokości kwantowania średnicy punktu $z$}
+\begin{tabular}{|l|l|l|}
+\hline
+Szerokość ścieżki $D$ & Typowa średnica dyszy & wysokość $z$ \\
+\hline
+$0{,}65 \text{ mm}$ & $0{,}6 \text{ mm}$ & $0{,}08 \text{ mm}$ \\
+\hline
+$0{,}55 \text{ mm}$ & $0{,}5 \text{ mm}$ & $0{,}23 \text{ mm}$ \\
+\hline
+$0{,}45 \text{ mm}$ & $0{,}4 \text{ mm}$ & $0{,}34 \text{ mm}$ \\
+\hline
+$0{,}35 \text{ mm}$ & $0{,}3 \text{ mm}$ & $0{,}41 \text{ mm}$ \\
+\hline
+$0{,}3 \text{ mm}$ & $0{,}25 \text{ mm}$ & $0{,}44 \text{ mm}$ \\
+\hline
+$0{,}2 \text{ mm}$ & $0{,}15 \text{ mm}$ & $0{,}47 \text{ mm}$ \\
+\hline
+\end{tabular} 
+\end{table}
+
 Sytuacje może poprawić stosowanie dysz o niższej średnicy, co spowoduje mniejszą szerokość ścieżki ekstruzji, ale dopiero wartości $D \leq 0{,}2 \text{ mm}$ pozwolą na odwzorowanie kształtu kropki z dokładnością do $0{,}05 \text{ mm}$, odpowiada to dyszomo średnicy $0{,}15 \text{ mm}$, których stosowanie jest znacznie trudniejsze od standardowych i wiąże się ze znacznym wydłużeniem czasu druku i ograniczeniem puli dostępnych materiałów \cite{e3d15}.
 
 \section{Reprezentacja geometrii druku FDM punktu prostopadłego do powierzchni stołu}
 Sytuacja przedstawia się zupełnie inaczej, gdy punkty drukowane są prostopadle do powierzchni stołu. W tym przypadku kolejne warstwy stają się półelipsami.
 
-Dla uproszczenia rozważmy geometrię punktów w takim samym układzie współrzędnych jak poprzednio, czyli niech wysokość punktu odpowiada osi $z$. W tej sytuacji punkt będzie dzielony w osi $y$, a kolejne warstwy będą zawierać połowę walca eliptycznego.
+Dla uproszczenia rozważmy geometrię punktów w takim samym układzie współrzędnych jak poprzednio \feqref{eq:braille_p_dz}, czyli niech wysokość punktu odpowiada osi $z$. W tej sytuacji punkt będzie dzielony w osi $y$, a kolejne warstwy będą zawierać połowę walca eliptycznego.
 
 Należy wyznaczyć półosie tej elipsy.
 Elipsoida punktu dana jest wzorem
 $(x^2 / \frac{d_p}{2}^2) + (y^2 / \frac{d_p}{2}^2) + (z^2 / h_p^2) = 1$.
 
 Równanie opisujące elipsę stanowiącą przekrój w osi $y$ w odległości $l$ od środka przyjmuje postać
+
+\begin{feq}
 $(x^2 / \frac{d_p}{2}^2) + (z^2 / h^2) = (1 - l^2 / \frac{d_p}{2}^2),$
+
+gdzie $x, y, z$ są współrzędnymi punktu, a $d_p$ średnicą jego podstawy.
+\caption{Elipsa stanowiąca przekrój punktu brajlowskiego w osi $y$ w odległości $l$ od środka}
+\end{feq}
+
 z czego można wyprowadzić wartość z
 
 $$
@@ -415,22 +499,22 @@ $$
 
 Zatem, półosi elipsy w odległości $l$ od środka to:
 
-\begin{figure}
+\begin{feq}
 $$
 d_l = 2 * \sqrt(\frac{d_p}{2}^2 - l^2) \\
 h_l = h_p * \sqrt(l^2 / \frac{d_p}{2}^2)
-$$,
+$$
 
-gdzie $d_l$ to oś elipsy w osi $x$, a $h_p$ półoś elipsy w osi $z$.
+gdzie $d_l$ to oś elipsy w osi $x$, a $h_l$ półoś elipsy w osi $z$.
 \caption{Wielkość półosi elipsy przekroju prostopadłego punktu brajlowskiego w odległości $l$ od środka}
-\end{figure}
+\end{feq}
 
-Przenosząc powyższe w geometrię druku, należy zauważyć, że wartość $h_p$ nie ma znaczenia podczas druku, o ile tylko szerokość obiektu, na którym nanoszony jest napis, wynosi $\geq D*2$. Pozwala to wykonać punkt z wykorzystaniem przestrzeni wewnątrz modelu.
-Zatem na rozdzielczość punktu wpływ ma jedynie wartość $d_l$ (szerokość ścieżki) oraz wysokość warstwy$H$.
+Przenosząc powyższe w geometrię druku, należy zauważyć, że wartość $h_l$ nie ma znaczenia podczas druku, o ile tylko szerokość obiektu, na którym nanoszony jest napis, wynosi $\geq D*2$. Pozwala to wykonać punkt z wykorzystaniem przestrzeni wewnątrz modelu.
+Zatem na rozdzielczość punktu wpływ ma jedynie wartość $d_l$ (wynikająca z szerokości ścieżki $D$ i wysokości warstwy $H$).
 
-Na poniższym wykresie zaznaczone są poprawne osie elips czerwona linia) i rzeczywiste osie niebieska linia) na kolejnych warstwach dla $d_p = 1{,}3 \text{ mm}$ i $h_p = 0{,}5 \text{ mm}$ dla odległości $l$ względem środka elipsy.
+Na poniższym wykresie zaznaczone są poprawne osie elips czerwona linia) i rzeczywiste osie niebieska linia) na kolejnych warstwach dla $d_p = 1{,}3 \text{ mm}$ i $h_p = 0{,}5 \text{ mm}$ dla odległości $l$ względem środka elipsy przy szerokości ścieżki $D=0{,}45 \text{ mm}$ i wysokości warstwy $H=0{,}1 \text{ mm}$.
 
-\begin{figure}
+\begin{figure}{h}
 \begin{tikzpicture}[scale=1.5]
 \begin{axis}[
 title={Zależność wielkości osi wielkiej elipsy warstwy od odległości warstwy $l$ od środka punktu},
@@ -490,7 +574,122 @@ Dodatkowym atutem tej geometrii jest zwiększona odporność punktów na ściera
 \caption{Tabliczka z PLA drukowana prostopadle, wysokość warstwy $0{,}07 \text{ mm}$}
 \end{figure}
 
+\subsection{Porównanie geometrii}
+Ponieważ niedokładność przy druku równoległym jest liczona w przekroju osi $z$, a przy druku prostopadłym w przekroju osi $y$, bezpośrednie porównanie niedokładności nie jest możliwe.
+
+Konieczne jest przyjęcie wspólnego punktu odniesienia. Za taki punkt zostanie uznana średnica $d_Z$ na wysokości $z$.
+
+Takie odniesienie zostało już przyjęte poprzednio dla druku równoległego \feqref{eq:braille_p_dz}.
+
+Dla druku prostopadłego w rzeczywistości przekrój punktu w wysokości $z$ nie jest kołem, ale przybliżeniem koła w postaci elipsy, której jedna półoś jest równa promieniowi, a druga wynika z wysokości warstwy. To ta druga będzie miała wpływ na jakość punktu.
+
+\begin{feq}
+$d_z = 2 * \sqrt{\frac{d_p}{2}^2 - l^2}$
+
+gdzie $l = z * \frac{d_p}{2} / h_p$
+\caption{Długość osi elipsy Brajla na wysokości $z$ w druku w przekroju prostopadłym}
+\end{feq}
+
+Na poniższym wykresie zaznaczone są poprawne średnice walców czerwona linia), rzeczywiste średnice w przekroju prostopadłym (żółta linia)  i równoległym (niebieska linia) na kolejnych warstwach dla $d_p = 1{,}3 \text{ mm}$ i $h_p = 0{,}5 \text{ mm}$ przy wysokości warstwy $0{,}1 \text{ mm}$.
+
+\begin{figure}{h}
+\begin{tikzpicture}[scale=1.5]
+\begin{axis}[
+title={Zależność średnicy walca warstwy od wysokości $z$},
+title style={text width=12em},
+xlabel={Wysokość [\text{ mm}]},
+ylabel={Średnica [\text{ mm}]},
+xmin=0.0,xmax=0.5,
+ymin=0.0,ymax=1.3,
+legend pos=south west,
+ymajorgrids=true,grid style=dashed
+]
+\addplot[color=red,mark=*]
+coordinates {
+(0,1.3)
+(0.05,1.28)
+(0.1,1.23)
+(0.15,1.2)
+(0.2,1.12)
+(0.25,1.08)
+(0.3,0.96)
+(0.35,0.9)
+(0.4,0.71)
+(0.45,0.6)
+(0.5,0.0)
+};
+\addplot[color=yellow,mark=square]
+coordinates {
+(0,1.3)
+(0.05,1.29)
+(0.1,1.27)
+(0.15,1.24)
+(0.2,1.19)
+(0.25,1.13)
+(0.3,1.04)
+(0.35,0.92)
+(0.4,0.78)
+(0.45,0.57)
+(0.5,0.0)
+};
+\addplot[color=blue,mark=square]
+coordinates {
+(0,1.3)
+(0.05,1.3)
+(0.1,1.23)
+(0.15,1.23)
+(0.2,1.12)
+(0.25,1.12)
+(0.3,0.96)
+(0.35,0.96)
+(0.4,0.88)
+(0.45,0.88)
+(0.5,0.0)
+};
+\legend{Wartość poprawna,Wartość w przekroju prostopadłym,Wartość w przekroju równoległym}
+\end{axis}
+\end{tikzpicture}
+\caption{Wykres porównujący rzeczywistą i drukowaną średnicę punktu Brajlowskiego ustawionego równolegle i prostopadle do powierzchni druku}
+\end{figure}
+
+\subsection{Objętość punktów Brajlowskich w druku prostopadłym}
+Podczas druku prostopadłego punkt brajlowski jest tworzony poprzez nałożenie na siebie kolejnych warstw w kształcie półwalców eliptycznych.
+
+Bez uwzględnienia minimalnej szerokości ścieżki i wysokości warstwy, objętość punktu można wyznaczyć z całki:
+
+\begin{feq}
+$v = 2 * \int_{0}^{d_p/2} \frac{\pi * \frac{d_l}{2} * h_l}{2} \, dl$
+
+gdzie
+
+$$
+d_l = 2 * \sqrt(\frac{d_p}{2}^2 - l^2) \\
+h_l = h_p * \sqrt(l^2 / \frac{d_p}{2}^2)
+$$
+\caption{Całka wyznaczająca objętość punktu brajlowskiego w druku prostopadłym}
+\end{feq}
+
+Ponieważ w rzeczywistości wartości są skwantowane do wysokości warstwy $H$ i szerokości ścieżki $D$, można ją przedstawić w uproszczonej postaci.
+\begin{feq}
+$$
+v = \sum_{l=0}^{\left\lfloor\frac{d_p}{H}\right\rfloor} *
+\begin{cases}
+\pi * \frac{d_l}{2} * h_l * H & d_l \geq 2D \\
+\pi * \frac{\left \lfloor \frac{d_l}{D} + \frac{1}{2} \right \rfloor * d_l}{2} * h_l * H & 0 \leq d_l < 2D
+\end{cases}
+$$
+
+gdzie
+
+$$
+d_l = 2 * \sqrt(\frac{d_p}{2}^2 - l^2) \\
+h_l = h_p * \sqrt(l^2 / \frac{d_p}{2}^2)
+$$
+\caption{Uproszczenie całki wyznaczającej objętość punktu brajlowskiego w druku prostopadłym z uwzględnieniem wysokości warstwy $H$ i szerokości ścieżki $D$}
+\end{feq}
+
 \section{Pozostałe czynniki mające wpływ na geometrię punktów}
+\label{sec:factors}
 \subsection{Struktura materiału}
 Warto zauważyć, że choć na czytelność Brajla największy wpływ ma jego orientacja względem płaszczyzny druku, rozważany model elipsoidy nie w pełni oddaje wygląd prawdziwego, tłoczonego Brajla. W rzeczywistości kształt punktów jest nieregularny.
 Zaprezentowany model matematyczny Brajla doskonale nadaje się do oznaczeń i tyflografik. W trakcie prowadzonych eksperymentów udało się jednak uzyskać nawet wierniejszą geometrię.
@@ -534,9 +733,9 @@ Substancje te były następnie podgrzewane do temperatury zbliżonej do temperat
 \end{itemize} 
 
 Okazało się, że wygładzanie chemiczne nadaje równy, sferyczny kształt punktom brajlowskim, nawet tym wykonanym równolegle do powierzchni stołu. Kluczowe jest jednak odpowiednie dobranie czasu - zbyt krótkie wygładzanie nie daje zadowalających efektów, a zbyt długie powoduje całkowitą utratę punktów i tabliczki.
-Wyniki doświadczeń prezentowały się następująco, dla tabliczek o grubości $2 \text{ mm}$:
+
 \begin{table}[t]
-\caption{Wyniki doświadczeń polegających na wygładzaniu chemicznym tabliczek}
+\caption{Wyniki doświadczeń polegających na wygładzaniu chemicznym tabliczek o grubości $2 \text{ mm}$}
 \begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
 Substancja & Efekt po 5 minutach & Efekt po 8 minutach & Efekt po 12 minutach & Efekt po 15 minutach & Efekt po 20 minutach & Efekt po 25 minutach \\
@@ -576,15 +775,19 @@ W takiej sytuacji punkt Brajlowski mógłby być tworzony z perspektywy dwuwymia
 
 Wysokość $z$ danego obszaru względem środka punktu dana jest wzorem:
 
-\begin{figure}
+\begin{feq}
 $z(x,y) = h_p * \sqrt{1 - \frac{x^2+y^2}{\frac{d_p}{2}^2}}$.
 \caption{Wysokość punktu w punkcie $x$, $y$ względem środka elipsoidy}
-\end{figure}
+\end{feq}
 
 Kwestią dalszych badań pozostaje zagadnienie rozdzielczości. W szczególności elipsoida punktu podzielona zostanie na $\approx d_p/D$ ścieżek, co dla punktu o średnicy $d_p=1,3 \text{ mm}$ i szerokości ścieżki $D=0,45 \text{ mm}$ zapewnia jedynie 3 ścieżki, wartość ta może okazać się zbyt mała.
 
 Wydaje się prawdopodobnym, że druk nieplanarny, o ile odnajdzie zastosowanie w wykonywaniu Brajla, podobnie do druku równoległego będzie wymagał dysz o małej średnicy: $0,25 \text{ mm}$ lub nawet $0,15 \text{ mm}$. Pytaniem otwartym jest odnalezienie innej geometrii ruchów dyszy, która pozwoli na uzyskanie lepszych wyników.
 Przy podejściu standardowym można przewidywać, że wyniki szerokości ścieżki $D$ będą tożsame dla podobnej wysokości warstwy $H$ w przypadku druku prostopadłego, gdzie satysfakcjonujące rezultaty osiąga się dopiero dla wartości $H \leq 0,2 \text{ mm}$.
+
+\subsection{Wpływ na jakość Brajla szybkich druków przy wykorzystaniu metody Pressure Advance}
+Metoda Pressure Advance \cite{pressureadvance} pozwala na lepsze odwzorowanie geometrii kształtów wykonywanych w technologii FDM. Jej celem jest obliczanie odpowiedniego ciśnienia wytłaczanego filamentu celem redukcji nierówności i artefaktów powstających podczas druków.
+Na rynku stopniowo pojawiają się nowe drukarki wykorzystujące to rozwiązanie. Istnieje duże prawdopodobieństwo, że znacznie skróci to czas drukowania tabliczek z napisami w alfabecie Brajla.
 
 \subsection{Pokrywanie modeli żywicą epoksydową}
 Istnieje również technika zwiększania gładkości modeli poprzez ich pokrywanie różnego rodzaju żywicami epoksydowymi \cite{epoxy}. Jest to alternatywa wygładzania chemicznego użyteczna szczególnie w przypadku polimerów, których wygładzanie wiąże się z użyciem niebezpiecznych, trudnych do uzyskania lub drogich substancji.
@@ -592,13 +795,17 @@ Dodatkowym atutem jest zwiększona odporność modeli na warunki zewnętrzne, sz
 
 Metoda ta wydaje się obiecująca w przypadku Brajla, szczególnie drukowanego pionowo i być może stanie się bezpieczniejszą alternatywą dla osób lub instytucji, które nie dysponują odpowiednim zapleczem do wykonania wygładzania chemicznego. Zagadnienie to wymaga przeprowadzenia dalszych badań.
 
-\subsection{Kontynuacja badań nad wygładzaniem chemicznym punktów brajlowskich drukowanych w technologii fdm}
+\subsection{Kontynuacja badań nad wygładzaniem chemicznym punktów}
 Dichlorometan stosowany do wygładzania polilaktydu (PLA) jest substancją niebezpieczną. Jako jego bezpieczniejszy zamiennik w różnych aplikacjach z powodzeniem stosuje się tetrahydrofuran \cite{thf}.
 Czysty tetrahydrofuran tworzy nadtlenki, które mogą wybuchnąć podczas podgrzewania, ale dostępne są różnego rodzaju stabilizatory. Kwestią dalszych badań jest możliwość wykorzystania tej substancji jako zamiennika dichlorometanu do wygładzania Brajla.
 
 Istnieją także substancje chemiczne zdolne rozpuszczać poliamidy \cite{pa}. Uzyskanie techniki wygładzania Brajla na nylonowych tabliczkach może być drogą do opracowania większej ilości metod wytwórczych oraz wykonywania bardzo odpornych oznaczeń do zastosowań przemysłowych.
 
+Nie ma także modelu opisującego proces wygładzenia. Pod wpływem chemicznego wygładzania dochodzi do rozpuszczenia granic między warstwami, co nadaje punktom sferyczny kształt. Pod wpływem wygładzania jednak stopniowo zmniejsza się wysokość punktu $h_p$ na rzecz średnicy podstawy $d_p$.
+Matematyczny model umożliwiłby lepsze przewidywanie reakcji i dopasowanie drukowanego modelu do pożądanego efektu.
+
 \section{Porównanie druku FDM z innymi technologiami wykonywania oznaczeń brajlowskich}
+\label{sec:comparison}
 \subsection{Technologie przyrostowe}
 \subsubsection{Druk 3d SLA}
 SLA (\emph{stereolitografia)}) to metoda druku 3d, w której zamiast wytłaczanego filamentu stosuje się żywice światłoczułe. Specjalny ekran lub laser naświetla kolejne warstwy żywicy, która jest w ten sposób utwardzana.
@@ -620,19 +827,19 @@ Nadruk UV sprawdza się natomiast w zastosowaniach wymagających mniejszej trwa�
 \subsection{Frezowanie CNC}
 \emph{Frezowanie CNC} to proces odwrotny względem technologii przyrostowych. W tym przypadku materiał jest usuwany (za pomocą narzędzi tnących), nie zaś nakładany. Ze względu na bardzo wysoką precyzję dostępnych urządzeń CNC, jakość Brajla powstającego w ten sposób jest bardzo wysoka, geometria punktu może być zbliżona do tej rozważanej w przypadku druku nieplanarnego. Frezowanie nadaje się też do wykonywania tabliczek z praktycznie dowolnego materiału.
 
-Wadą frezowania tabliczek jest bardzo duża ilość usuwanego materiału, w praktyce punkty Brajla stanowią niewielki ułamek powierzchni. Jest to też proces bardzo długotrwały i kosztowny.
+Wadą frezowania tabliczek jest bardzo duża ilość usuwanego materiału, w praktyce punkty Brajla stanowią niewielki ułamek powierzchni \feqref{eq:braille_dot_v})). Jest to też proces bardzo długotrwały i kosztowny.
 
-Przy tabliczce o szerokości $w$, wysokości $h$ i punktach o średnicy podstawy $d_p$ oraz wysokości $h_p$, ilość ścinanego materiału wynosi
+Przy tabliczce o szerokości $w$, wysokości $h$ i punktach o średnicy podstawy $d_p$ oraz wysokości $h_p$, objętość ścinanego materiału wynosi
 
-\begin{figure}
-$V = w*h - n * \left(\frac{4}{3}\pi \frac{d_p}{2}^2h_p\right)$
+\begin{feq}
+$V = w*h - n * \left(\frac{\frac{4}{3}\pi \frac{d_p}{2}^2h_p}{2}\right)$
 
 gdzie
 
 $n$ - liczba punktów
 \caption{Usuwany materiał z powierzchni przy frezowaniu CNC}
-\end{figure}
-Dla tabliczki o wymiarze $100 \times 20 \text{ mm}$ dla napisu "Fundacja Prowadnica" ($n=52$, $d_p=1{,}3 \text{ mm}$, $h_p=0{,}5 \text{mm}$), usuwany materiał ma objętość $\approx 1954 \text{mm}^3$, co stanowi $97{,}7\text{\%}$ objętości ścinanych warstw.
+\end{feq}
+Dla tabliczki o wymiarze $100 \times 20 \text{ mm}$ dla napisu "Fundacja Prowadnica" ($n=52$, $d_p=1{,}3 \text{ mm}$, $h_p=0{,}5 \text{mm}$), usuwany materiał ma objętość $\approx 1977 \text{mm}^3$, co stanowi $98{,}9\text{\%}$ objętości ścinanych warstw.
 
 W rezultacie otrzymuje się jednak oznaczenia o najlepszej jakości i trwałości ze wszystkich zaprezentowanych metod.
 
@@ -670,82 +877,121 @@ Na stronie \url{https://3dpoint.tech} można znaleźć dedykowane oprogramowanie
 
 \begin{thebibliography}{9}
 \bibitem{slicmath}
-Gary Hodgson, Alessandro Ranellucci, Jeff Moe
-\textit{Slic3r Flow Math}
-\url{https://manual.slic3r.org/advanced/flow-math}
+Gary Hodgson, Alessandro Ranellucci, Jeff Moe,
+\textit{Slic3r Flow Math},
+\url{https://manual.slic3r.org/advanced/flow-math},
+Dostęp: 18 kwietnia 2023.
 
 \bibitem{braille}
-Louis Braille
-\textit{Method of Writing Words, Music, and Plain Songs by Means of Dots, for Use by the Blind and Arranged for Them}
-\url{https://nfb.org/images/nfb/publications/braille/thefirstpublicationofthebraillecodeenglishtranslation.html}
+Louis Braille,
+\textit{Method of Writing Words, Music, and Plain Songs by Means of Dots, for Use by the Blind and Arranged for Them},
+\url{https://nfb.org/images/nfb/publications/braille/thefirstpublicationofthebraillecodeenglishtranslation.html},
+Dostęp: 20 kwietnia 2023.
 
 \bibitem{braillepolish}
-Paweł Wdówik
-\textit{Zasady adaptacji materiałów dydaktycznych do wersji brajlowskiej}
-\url{https://pzn.org.pl/wp-content/uploads/2016/07/zasady_adaptacji_materialow_dydaktycznych_do_wersji_brajlowskiej.pdf}
+Paweł Wdówik,
+\textit{Zasady adaptacji materiałów dydaktycznych do wersji brajlowskiej},
+\url{https://pzn.org.pl/wp-content/uploads/2016/07/zasady_adaptacji_materialow_dydaktycznych_do_wersji_brajlowskiej.pdf},
+Dostęp: 20 kwietnia 2023.
 
 \bibitem{brailleenglish}
-International Council on English Braille
-\textit{The Rules of Unified English Braille}
-Second Edition 2013
-\url{https://iceb.org/Rules%20of%20Unified%20English%20Braille%202013.pdf}
+International Council on English Braille,
+\textit{The Rules of Unified English Braille},
+Second Edition 2013,
+\url{https://iceb.org/Rules%20of%20Unified%20English%20Braille%202013.pdf},
+Dostęp: 20 kwietnia 2023.
 
 \bibitem{brailleiso}
-The International Organization for Standardization
-ISO 17351:2013
-\textit{Braille on packaging for medicinal products}
-\url{https://www.iso.org/obp/ui/#iso:std:iso:17351:ed-1:v1:en}
+The International Organization for Standardization,
+ISO 17351:2013,
+\textit{Braille on packaging for medicinal products},
+\url{https://www.iso.org/obp/ui/#iso:std:iso:17351:ed-1:v1:en},
+Dostęp: 20 kwietnia 2023.
 
 \bibitem{chords}
-Ido Sarig
-\textit{Proving the Intersecting Chord Theorem}
-\url{https://geometryhelp.net/intersecting-chords-theorem/}
+Ido Sarig,
+\textit{Proving the Intersecting Chord Theorem},
+\url{https://geometryhelp.net/intersecting-chords-theorem/},
+Dostęp: 18 kwietnia 2023.
+
+\bibitem{ellipsoid}
+Leo Maas,
+\textit{On the surface area of an ellipsoid and related integrals of elliptic integrals},
+\url{https://www.sciencedirect.com/science/article/pii/037704279200009X},
+Dostęp: 16 maja 2023.
 
 \bibitem{arachne}
-Elder Linssen
-\textit{Get an engine boost with Ultimaker Cura and Arachne beta }
-\url{https://ultimaker.com/learn/get-an-engine-boost-with-ultimaker-cura-and-arachne-beta}
+Elder Linssen,
+\textit{Get an engine boost with Ultimaker Cura and Arachne beta },
+\url{https://ultimaker.com/learn/get-an-engine-boost-with-ultimaker-cura-and-arachne-beta},
+Dostęp: 29 kwietnia 2023.
 
 \bibitem{e3d15}
-Adam Thomas
-\textit{0.15mm High-resolution nozzles: For really very extremely small prints}
-\url{https://e3d-online.com/blogs/news/0-15mm-high-resolution-nozzles-for-really-very-extremely-small-prints}
+Adam Thomas,
+\textit{0.15mm High-resolution nozzles: For really very extremely small prints},
+\url{https://e3d-online.com/blogs/news/0-15mm-high-resolution-nozzles-for-really-very-extremely-small-prints},
+Dostęp: 21 kwietnia 2023.
 
 \bibitem{3dparameters}
-Mingju Lei, Qinghua Wei, Mingyang Li, Juan Zhang, Rongbin Yang, Yanen Wang
-\textit{Numerical Simulation and Experimental Study the Effects of Process Parameters on Filament Morphology and Mechanical Properties of FDM 3D Printed PLA/GNPs Nanocomposite }
-\url{https://www.mdpi.com/2073-4360/14/15/3081}
+Mingju Lei, Qinghua Wei, Mingyang Li, Juan Zhang, Rongbin Yang, Yanen Wang,
+\textit{Numerical Simulation and Experimental Study the Effects of Process Parameters on Filament Morphology and Mechanical Properties of FDM 3D Printed PLA/GNPs Nanocomposite },
+\url{https://www.mdpi.com/2073-4360/14/15/3081},
+Dostęp: 29 kwietnia 2023.
 
 \bibitem{postprocessing}
-Wiesław Kuczko, Filip Górski, Radosław Wichniarek, Paweł Buń
-\textit{INFLUENCE OF POST-PROCESSING ON THE ACCURACY OF FDM PRODUCTS}
-\url{https://bibliotekanauki.pl/articles/103092.pdf}
+Wiesław Kuczko, Filip Górski, Radosław Wichniarek, Paweł Buń,
+\textit{INFLUENCE OF POST-PROCESSING ON THE ACCURACY OF FDM PRODUCTS},
+\url{https://bibliotekanauki.pl/articles/103092.pdf},
+Dostęp: 29 kwietnia 2023.
 
 \bibitem{plaabsasa}
-Marino Brčić, Sanjin Kršćanski, Josip Brnić
-\textit{Rotating Bending Fatigue Analysis of Printed Specimens from Assorted Polymer Materials }
-\url{https://www.mdpi.com/2073-4360/13/7/1020}
+Marino Brčić, Sanjin Kršćanski, Josip Brnić,
+\textit{Rotating Bending Fatigue Analysis of Printed Specimens from Assorted Polymer Materials },
+\url{https://www.mdpi.com/2073-4360/13/7/1020},
+Dostęp: 29 kwietnia 2023.
 
 \bibitem{nonplanar}
-Daniel Ahlers, Florens Wasserfall, Norman Hendrich, Jianwei Zhang
-\textit{3D Printing of Nonplanar Layers for Smooth Surface Generation}
-\url{https://tams.informatik.uni-hamburg.de/publications/2019/case_ahlers_2019.pdf}
+Daniel Ahlers, Florens Wasserfall, Norman Hendrich, Jianwei Zhang,
+\textit{3D Printing of Nonplanar Layers for Smooth Surface Generation},
+\url{https://tams.informatik.uni-hamburg.de/publications/2019/case_ahlers_2019.pdf},
+Dostęp: 29 kwietnia 2023.
+
+\bibitem{pressureadvance}
+Sebastian Popp, Christer Elverum, Torgeir Welo,
+\textit{Investigating pressure advance algorithms for filament-based melt extrusion additive manufacturing: theory, practice and simulations},
+\url{https://www.emerald.com/insight/content/doi/10.1108/RPJ-10-2018-0275/full/html},
+Dostęp: 16 maja 2023.
 
 \bibitem{epoxy}
-Chil-Chyuan Kuo, Sheng-Jie Su
-\textit{A simple method for improving surface quality of rapid prototype}
-\url{http://nopr.niscpr.res.in/handle/123456789/25583}
+Chil-Chyuan Kuo, Sheng-Jie Su,
+\textit{A simple method for improving surface quality of rapid prototype},
+\url{http://nopr.niscpr.res.in/handle/123456789/25583},
+Dostęp: 29 kwietnia 2023.
 
 \bibitem{thf}
-Han Li, Wei Zhao, Xinhui Wu, Hong Tang, Qiushi Li, Jing Tan, Gong Wang
-\textit{3D Printing and Solvent Dissolution Recycling of Polylactide–Lunar Regolith Composites by Material Extrusion Approach }
-\url{https://www.mdpi.com/2073-4360/12/8/1724}
+Han Li, Wei Zhao, Xinhui Wu, Hong Tang, Qiushi Li, Jing Tan, Gong Wang,
+\textit{3D Printing and Solvent Dissolution Recycling of Polylactide–Lunar Regolith Composites by Material Extrusion Approach },
+\url{https://www.mdpi.com/2073-4360/12/8/1724},
+Dostęp: 29 kwietnia 2023.
 
 \bibitem{pa}
-Mostafa Jabbari, Mikael Skrifvars, Dan Åkesson, Mohammad Taherzadeh
-\textit{New Solvent for Polyamide 66 and Its Use for Preparing a Single-Polymer Composite-Coated Fabric}
-\url{https://www.hindawi.com/journals/ijps/2018/6235165/}
+Mostafa Jabbari, Mikael Skrifvars, Dan Åkesson, Mohammad Taherzadeh,
+\textit{New Solvent for Polyamide 66 and Its Use for Preparing a Single-Polymer Composite-Coated Fabric},
+\url{https://www.hindawi.com/journals/ijps/2018/6235165/},
+Dostęp: 29 kwietnia 2023.
 
 \end{thebibliography}
+
+\ifpdf
+
+\newpage
+
+\listoffigures
+
+\listoffeqs
+
+\listofcodes
+
+\fi
 
 \end{document}

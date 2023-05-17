@@ -637,6 +637,24 @@ mjx-script > mjx-spacer {
   display: block;
 }
 
+mjx-mspace {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-munderover {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-munderover:not([limits="false"]) {
+  padding-top: .1em;
+}
+
+mjx-munderover:not([limits="false"]) > * {
+  display: block;
+}
+
 mjx-c::before {
   display: block;
   width: 0;
@@ -893,6 +911,41 @@ mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
   padding: 0.59em 0 0 0;
 }
 
+.fdmbraille_html mjx-stretchy-v.mjx-c7B mjx-beg mjx-c::before {
+  content: "\23A7";
+  padding: 0.899em 0.889em 0.01em 0;
+}
+
+.fdmbraille_html mjx-stretchy-v.mjx-c7B mjx-ext mjx-c::before {
+  content: "\23AA";
+  width: 0.889em;
+}
+
+.fdmbraille_html mjx-stretchy-v.mjx-c7B mjx-end mjx-c::before {
+  content: "\23A9";
+  padding: 0.01em 0.889em 0.899em 0;
+}
+
+.fdmbraille_html mjx-stretchy-v.mjx-c7B mjx-mid mjx-c::before {
+  content: "\23A8";
+  padding: 1.16em 0.889em 0.66em 0;
+}
+
+.fdmbraille_html mjx-stretchy-v.mjx-c7B > mjx-mid {
+  margin-top: -0.91em;
+  margin-bottom: -0.91em;
+}
+
+.fdmbraille_html mjx-stretchy-v.mjx-c7B > mjx-end {
+  margin-top: -0.909em;
+}
+
+.fdmbraille_html mjx-stretchy-v.mjx-c7B > mjx-ext {
+  height: 50%;
+  border-top-width: 0.879em;
+  border-bottom-width: 0.879em;
+}
+
 .fdmbraille_html mjx-c.mjx-c1D465.TEX-I::before {
   padding: 0.442em 0.572em 0.011em 0;
   content: "x";
@@ -1043,11 +1096,6 @@ mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
   content: ".";
 }
 
-.fdmbraille_html mjx-c.mjx-c2032::before {
-  padding: 0.56em 0.275em 0 0;
-  content: "\2032";
-}
-
 .fdmbraille_html mjx-c.mjx-c2212::before {
   padding: 0.583em 0.778em 0.082em 0;
   content: "\2212";
@@ -1056,6 +1104,11 @@ mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
 .fdmbraille_html mjx-c.mjx-c221A.TEX-S2::before {
   padding: 1.15em 1.02em 0.65em 0;
   content: "\221A";
+}
+
+.fdmbraille_html mjx-c.mjx-c2032::before {
+  padding: 0.56em 0.275em 0 0;
+  content: "\2032";
 }
 
 .fdmbraille_html mjx-c.mjx-c2217::before {
@@ -1108,6 +1161,71 @@ mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
   content: "\D7";
 }
 
+.fdmbraille_html mjx-c.mjx-c1D449.TEX-I::before {
+  padding: 0.683em 0.769em 0.022em 0;
+  content: "V";
+}
+
+.fdmbraille_html mjx-c.mjx-c1D70B.TEX-I::before {
+  padding: 0.431em 0.57em 0.011em 0;
+  content: "\3C0";
+}
+
+.fdmbraille_html mjx-c.mjx-c1D446.TEX-I::before {
+  padding: 0.705em 0.645em 0.022em 0;
+  content: "S";
+}
+
+.fdmbraille_html mjx-c.mjx-c28.TEX-S2::before {
+  padding: 1.15em 0.597em 0.649em 0;
+  content: "(";
+}
+
+.fdmbraille_html mjx-c.mjx-c28.TEX-S1::before {
+  padding: 0.85em 0.458em 0.349em 0;
+  content: "(";
+}
+
+.fdmbraille_html mjx-c.mjx-c29.TEX-S1::before {
+  padding: 0.85em 0.458em 0.349em 0;
+  content: ")";
+}
+
+.fdmbraille_html mjx-c.mjx-c1D452.TEX-I::before {
+  padding: 0.442em 0.466em 0.011em 0;
+  content: "e";
+}
+
+.fdmbraille_html mjx-c.mjx-c69::before {
+  padding: 0.669em 0.278em 0 0;
+  content: "i";
+}
+
+.fdmbraille_html mjx-c.mjx-c6E::before {
+  padding: 0.442em 0.556em 0 0;
+  content: "n";
+}
+
+.fdmbraille_html mjx-c.mjx-c68::before {
+  padding: 0.694em 0.556em 0 0;
+  content: "h";
+}
+
+.fdmbraille_html mjx-c.mjx-c2061::before {
+  padding: 0 0 0 0;
+  content: "";
+}
+
+.fdmbraille_html mjx-c.mjx-c29.TEX-S2::before {
+  padding: 1.15em 0.597em 0.649em 0;
+  content: ")";
+}
+
+.fdmbraille_html mjx-c.mjx-c221A.TEX-S3::before {
+  padding: 1.45em 1.02em 0.95em 0;
+  content: "\221A";
+}
+
 .fdmbraille_html mjx-c.mjx-c1D45C.TEX-I::before {
   padding: 0.441em 0.485em 0.011em 0;
   content: "o";
@@ -1148,6 +1266,11 @@ mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
   content: "\2248";
 }
 
+.fdmbraille_html mjx-c.mjx-c38::before {
+  padding: 0.666em 0.5em 0.022em 0;
+  content: "8";
+}
+
 .fdmbraille_html mjx-c.mjx-c2F.TEX-S2::before {
   padding: 1.15em 0.811em 0.649em 0;
   content: "/";
@@ -1156,6 +1279,36 @@ mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
 .fdmbraille_html mjx-c.mjx-c2F.TEX-S3::before {
   padding: 1.45em 1.044em 0.949em 0;
   content: "/";
+}
+
+.fdmbraille_html mjx-c.mjx-c1D44D.TEX-I::before {
+  padding: 0.683em 0.723em 0 0;
+  content: "Z";
+}
+
+.fdmbraille_html mjx-c.mjx-c1D463.TEX-I::before {
+  padding: 0.443em 0.485em 0.011em 0;
+  content: "v";
+}
+
+.fdmbraille_html mjx-c.mjx-c222B::before {
+  padding: 0.716em 0.472em 0.216em 0;
+  content: "\222B";
+}
+
+.fdmbraille_html mjx-c.mjx-c230A.TEX-S2::before {
+  padding: 1.15em 0.528em 0.649em 0;
+  content: "\230A";
+}
+
+.fdmbraille_html mjx-c.mjx-c230B.TEX-S2::before {
+  padding: 1.15em 0.528em 0.649em 0;
+  content: "\230B";
+}
+
+.fdmbraille_html mjx-c.mjx-c2211.TEX-S2::before {
+  padding: 0.95em 1.444em 0.45em 0;
+  content: "\2211";
 }
 
 .fdmbraille_html mjx-c.mjx-c2218::before {
@@ -1168,38 +1321,18 @@ mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
   content: "l";
 }
 
-.fdmbraille_html mjx-c.mjx-c38::before {
-  padding: 0.666em 0.5em 0.022em 0;
-  content: "8";
-}
-
-.fdmbraille_html mjx-c.mjx-c221A.TEX-S3::before {
-  padding: 1.45em 1.02em 0.95em 0;
-  content: "\221A";
-}
-
-.fdmbraille_html mjx-c.mjx-c1D449.TEX-I::before {
-  padding: 0.683em 0.769em 0.022em 0;
-  content: "V";
-}
-
 .fdmbraille_html mjx-c.mjx-c1D45B.TEX-I::before {
   padding: 0.442em 0.6em 0.011em 0;
   content: "n";
 }
 
-.fdmbraille_html mjx-c.mjx-c28.TEX-S2::before {
-  padding: 1.15em 0.597em 0.649em 0;
+.fdmbraille_html mjx-c.mjx-c28.TEX-S3::before {
+  padding: 1.45em 0.736em 0.949em 0;
   content: "(";
 }
 
-.fdmbraille_html mjx-c.mjx-c1D70B.TEX-I::before {
-  padding: 0.431em 0.57em 0.011em 0;
-  content: "\3C0";
-}
-
-.fdmbraille_html mjx-c.mjx-c29.TEX-S2::before {
-  padding: 1.15em 0.597em 0.649em 0;
+.fdmbraille_html mjx-c.mjx-c29.TEX-S3::before {
+  padding: 1.45em 0.736em 0.949em 0;
   content: ")";
 }
 
