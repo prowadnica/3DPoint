@@ -3,7 +3,7 @@ title: "3. Dobór parametrów i wydruk modelu"
 permalink: /instrukcja/krok3
 ---
 
-Druk 3d oznaczeń Brajlowskich może być wymagający. W trakcie naszych testów wykonaliśmy ponad 5.000 tabliczek przez 15 miesięcy, aby porównać różne konfiguracje i opracować najlepsze metody. Poniższe informacje są wynikiem tych testów.
+Druk 3d oznaczeń Brajlowskich może być wymagający. W trakcie naszych testów wykonaliśmy ponad 1.000 tabliczek przez 15 miesięcy, aby porównać różne konfiguracje i opracować najlepsze metody. Poniższe informacje są wynikiem tych testów.
 Uwaga!
 Wszystkie nasze testy były prowadzone na drukarkach 3d firmy Prusa: Original Prusa I3 MK3S+, Original Prusa Mini+. Postaraliśmy się, aby podane tu informacje były uniwersalne, jednak mogą wymagać dostosowania dla innych maszyn, a na niektórych z nich osiągnięcie zadowalających wyników może być niemożliwe.
 ## Orientacja modelu
