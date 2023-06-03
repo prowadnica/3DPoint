@@ -10,6 +10,7 @@ Materiał, z którego wykonywane są tabliczki, zależy przede wszystkim od ich 
 * Materiały podatne na wypaczanie należy wybierać tylko do druku w komorze, drobne wypaczenia będą od razu widoczne w ułożeniu Brajla,
 * Należy zadbać o odpowiednie wysuszenie materiału,
 * Warto wybierać filamenty o dobrej tolerancji średnicy, np. 0,02 mm.
+
 ## Przykładowe materiały
 Poniżej zamieszczamy informację o naszych doświadczeniach w pracy z różnymi materiałami.
 ### PLA
