@@ -21,16 +21,17 @@ W trakcie kontroli weryfikowana jest:
 
 | Instytucja | Adres | Wykonawca | Uwagi |
 | --- | --- | --- | --- |
-| Liceum Ogólnokształcące z Oddziałami Integracyjnymi | Al. Wojska Polskiego 119, 70-490, Szczecin | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
-| Dolnośląski Szpital Specjalistyczny im. T. Marciniaka | Fieldorfa 2, 54-049, Wrocław | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
-| Urząd Gminy Bukowsko | Bukowsko 290, 38-505, Bukowsko | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
-| Gminny Ośrodek Pomocy Społecznej w Trzcianie | Trzciana 302, 32-733, Trzciana | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
-| Urząd Gminy Inowrocław | Królowej Jadwigi 43, 88-100, Inowrocław | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
-| Miejski Ośrodek pomocy Rodzinie w Chełmie | Kolejowa 8, 22-100, Chełm | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
-| Powiatowe Centrum Pomocy Rodzinie (powiatu Chojnickiego) | Piłsudskiego 30, 89-600, Chojnice | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
-| Stowarzyszenie Przyjaciół Publicznej Szkoły Podstawowej w Sielcu | Sielec 38, 05-610, Goszczyn | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
-| Hrubieszowska Spółdzielnia Socjalna im. Zośki | Piłsudskiego 11, 22-500, Hrubieszów | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
-| Muzeum Pierwszych Piastów na Lednicy | Dziekanowice 32, 62-261, Lednogóra | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
+| Liceum Ogólnokształcące z Oddziałami Integracyjnymi | Al. Wojska Polskiego 119, 70-490 Szczecin | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
+| Dolnośląski Szpital Specjalistyczny im. T. Marciniaka | Fieldorfa 2, 54-049 Wrocław | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
+| Urząd Gminy Bukowsko | Bukowsko 290, 38-505 Bukowsko | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
+| Gminny Ośrodek Pomocy Społecznej w Trzcianie | Trzciana 302, 32-733 Trzciana | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
+| Urząd Gminy Inowrocław | Królowej Jadwigi 43, 88-100 Inowrocław | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
+| Miejski Ośrodek pomocy Rodzinie w Chełmie | Kolejowa 8, 22-100 Chełm | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
+| Powiatowe Centrum Pomocy Rodzinie (powiatu Chojnickiego) | Piłsudskiego 30, 89-600 Chojnice | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
+| Stowarzyszenie Przyjaciół Publicznej Szkoły Podstawowej w Sielcu | Sielec 38, 05-610 Goszczyn | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
+| Hrubieszowska Spółdzielnia Socjalna im. Zośki | Piłsudskiego 11, 22-500 Hrubieszów | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
+| Muzeum Pierwszych Piastów na Lednicy | Dziekanowice 32, 62-261 Lednogóra | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
+| Teatr Powszechny w Łodzi | ul. Legionów 21, 91-069 Łódź | Fundacja Prowadnica | |
 | --- | --- | --- | --- |
 
 ## Tabliczki niezweryfikowane
