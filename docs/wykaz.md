@@ -32,6 +32,7 @@ W trakcie kontroli weryfikowana jest:
 | Hrubieszowska Spółdzielnia Socjalna im. Zośki | Piłsudskiego 11, 22-500 Hrubieszów | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
 | Muzeum Pierwszych Piastów na Lednicy | Dziekanowice 32, 62-261 Lednogóra | Fundacja Prowadnica | W ramach projektu "Właściwe Drzwi" |
 | Teatr Powszechny w Łodzi | ul. Legionów 21, 91-069 Łódź | Fundacja Prowadnica | |
+| Publiczna Szkoła Podstawowa z Oddziałami Integracyjnymi nr 2 | ul. Armii Krajowej 17, 78-300 Świdwin | Fundacja Prowadnica | |
 | --- | --- | --- | --- |
 
 ## Tabliczki niezweryfikowane
